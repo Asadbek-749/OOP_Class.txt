@@ -1,0 +1,47 @@
+Java Scriptda OOP(Obyektga yunaltirilgan Dasturlash) 
+Obyektga yunaltirilgan Dasturlash (OOP) dasturlash paradigmasi bo'lib, u dasturlarni obyektlarga va ularning o'zaro munosabatlari,
+orqali tuzulish v atshkil qilish imkonini beradi. JSda, birinchi navbatda, funksional dasturlash tili sifatida ishlab chiqarilgan bo'lsada,
+u OOP uchun kuchli imkoniyatlariga ega.
+
+ 
+JSda Class(Sinflar) 
+JSda class -  bu obyektlarni yaratish uchun shablon yoki struktura. Sinflar, obyektlar yaratishda yordam beruvchi konstruktorn 
+funksiyalarini osonroq va inteutiv usulda yozish imkonini beradi. ES6 dan boshlab, JSda class yaratish uchun maxsus sintaksis qo'shiladi,
+bu esa   paradigmasi yanada qulay ishlash imkonini beradi.
+
+1.Sinf yaratish 
+Sinf yaratish uchun class kalit so'zidan foydalanamiz. Sinf ichida constructor metodini e'lon qilib, obyektning boshlang'ich 
+qiymatlarini belgilashimiz mumkin.
+
+class Animal {
+    constructor(name,species) {
+        this.name = name;
+        this.species = species;
+    }
+
+    speak(){
+        console.log(`${this.name} makes a noise.`);
+    }
+}
+
+Obyekt Yaratish 
+const dog = new Animal('Rex','Dog');
+dog.speak(); //Rex makes a noise. 
+
+Yuqoridagi miosolda Animal sinfi name va species xususiyatlarini qabul qiluvchi konstruktor
+metodiga ega. speak metodi hayvonning ovozini chiqaradi.
+
+
+2.Sinflarda Meros olish 
+JSda sinflar o'rtasida meros olish uchun extends kalit suzidan foydalanamiz. Bu orqali bir sinf boshqa sinfdan 
+xususiyatlar va metodlarini olish mumkin.
+
+Misol:
+class Dog extends Animal {
+    speak(){
+        console.log('${this.name} barks. ');
+    }
+}
+
+const dog = new Dog ('Rex','Dog');
+dog.speak() // Rex barks
