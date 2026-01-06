@@ -1,0 +1,51 @@
+Closure — bu JavaScript’da ichki funksiya tashqi funksiyaning o‘zgaruvchilariga kirish
+huquqini saqlab qoladigan mexanizm. Ya’ni, tashqi funksiya bajarilib bo‘lgandan keyin
+ham ichki funksiya uning kontekstini “eslab qoladi” va undan foydalanishi mumkin.
+
+
+Asosiy tushunchalar
+
+Closure ta’rifi: Funksiya o‘zining tashqi lexical scope’dagi o‘zgaruvchilarni eslab qoladi.
+
+Lexical scoping: Funksiyaning qaysi o‘zgaruvchilarga kirishi — u qayerda e’lon qilinganiga bog‘liq.
+
+Private data: Closure orqali tashqaridan ko‘rinmaydigan, faqat ichki funksiya orqali boshqariladigan o‘zgaruvchilar yaratish mumkin.
+
+State management: Har safar chaqirilganda ichki hisobni (counter, sum, balance) saqlab boradi.
+
+Misol
+function outer() {
+  let count = 0; // tashqi o'zgaruvchi
+
+  function inner() {
+    count++;
+    console.log("Count:", count);
+  }
+
+  return inner;
+}
+
+let counter = outer();
+counter(); // Count: 1
+counter(); // Count: 2 
+
+Closure — bu JavaScript tilida funksiya va uning lexical (mahalliy) muhitini birgalikda saqlab qolish
+imkoniyatini beruvchi mexanizmdir. Yana bir ko'rinishda, closure - bu bir funksiyaning ichida
+joylashgan boshqa funksiya. Birinchi funksiya ichida o'zgaruvchilarni e'lon gilib, ikkinchi funksiya
+o'sha o'zgaruvchilarni ishlatishi mumkin.
+
+Closure'ning asosiy xususiyati — ichki funksiya, tashqi funksiyadan olingan o'zgaruvchilarga murojaat
+gila olishi va bu o'zgaruvchilarni saqlab qolishi.
+
+
+Lexical Environment — bu JavaScript'ning o'zgaruvchilarni qayerda va qanday saglashini aniqlovchi
+tushunchadir. Har bir funksiya va blokda o'ziga xos lexical environment bo'ladi. Lexical environment,
+o'z ichiga:
+1 O'zgaruvchilar: Lexical environment o'zida o'zgaruvchilarni saglaydi.
+2 Link: Har bir lexical environment o'zining tashqi (parent) lexical environmentiga havola qiladi. Bu
+orqali ichki funksiya tashqi muhitda e'lon qilingan o'zgaruvchilarga murojaat gila oladi.
+Lexical environment ikki asosiy qismdan iborat:
+ O'zgaruvchilarni saqlovchi joy (Environment Record): O'zgaruvchilar va ularning qiymatlari
+saqlanadi.
+ Reference to the outer environment: Tashgi lexical environmentga havola, bu orgali ichki
+funksiya tashqi o'zgaruvchilarga kirish imkoniyatiga ega bo'ladi.
