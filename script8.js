@@ -87,5 +87,103 @@ Object.defineProperty(bankHisobi, "pinCode", {
 console.log(bankHisobi);
 console.log(bankHisobi.pinCode);
 
+// 9-masala
+class toliqIsm {
+  constructor(ism, familiya) {
+    (this.ism = ism), (this.familiya = familiya);
+    console.log(ism, familiya);
+  }
+}
 
-// 9-masala 
+let a = new toliqIsm("Asadbek", "Shodiyev");
+
+// 10-masala
+let arr10 = [10, 20, 30];
+let arr10Summ = arr10.reduce((acc, num) => acc + num, 0);
+console.log(arr10Summ);
+
+// 11-masala
+let mahsulotlar11 = {
+  olma: 3000,
+  nok: 2000,
+};
+function mahsulotniChiqar() {
+  return this.olma;
+}
+let bind = mahsulotniChiqar.bind(mahsulotlar11);
+console.log("Mahsulot narxi:", bind());
+
+// 12-masala
+let narxlar = [500, 1000, 1500];
+function narxlarSumm(arr) {
+  return arr.reduce((acc, num) => acc + num, 0);
+}
+let summ = narxlarSumm.apply(null, [narxlar]);
+console.log("Yig'indi", summ);
+
+// 13-masala
+let savdo = {
+  olma: 100,
+  nok: 150,
+  banan: 80,
+};
+
+savdo.foyda = function () {
+  let qiymatlar = Object.values(this);
+  let summ = qiymatlar.reduce((acc, num) => acc + num, 0);
+  return summ;
+};
+
+console.log("Foyda", savdo.foyda());
+
+// 14-masala
+let sinf14 = {
+  oquvchilar: 25,
+  oqituvchi: 1,
+};
+Object.seal(sinf14);
+sinf14.oquvchilar = 35;
+console.log(sinf14);
+
+// 15-masala
+let shaxs15 = { ism: "Olim", yosh: 25, salomlash };
+function salomlash() {
+  console.log("Salom, men", this.ism + "man !");
+}
+shaxs15.salomlash();
+
+// 16-masala
+class Odam {
+  constructor(ism, age) {
+    this.ism = ism;
+    this.age = age;
+  }
+
+  gapir() {
+    console.log(this.ism + " gapir");
+  }
+}
+let Ahror = new Odam("Ahror", 24);
+Ahror.gapir();
+
+// 17-masala
+let katalog = {
+  texnika: {
+    komp: 5000,
+    printer: 3000,
+  },
+  oziq_ovqat: {
+    non: 1000,
+    gruch: 5000,
+  },
+};
+
+console.log(
+  "Texnika:",
+  Object.values(katalog.texnika).reduce((acc, num) => acc + num, 0)
+);
+console.log(
+  "Oziq ovqat:",
+  Object.values(katalog.oziq_ovqat).reduce((acc, num) => acc + num, 0)
+);
+
