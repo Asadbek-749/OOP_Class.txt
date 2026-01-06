@@ -1,0 +1,47 @@
+JavaScript’da Object Prototypes — bu obyektlarning bir-biridan xususiyat va metodlarni meros qilib olish mexanizmi. 
+Har bir obyekt boshqa obyektga ulanadi va shu orqali toString(), hasOwnProperty() kabi umumiy metodlardan foydalanadi.
+Bu mexanizm “prototype chain” deb ataladi.
+
+Asosiy tushunchalar
+Prototype: Har bir obyektning “ota”si bo‘lib, undan metod va propertylarni meros qilib oladi.
+
+Prototype chain: Obyekt biror propertyni topa olmasa, yuqoriga qarab prototiplar zanjiri bo‘ylab qidiradi.
+
+Shadowing: Agar obyekt o‘zida prototipdagi property nomi bilan bir xil propertyga ega bo‘lsa, u prototipdagini “yashirib” qo‘yadi.
+
+Object.prototype: Barcha obyektlarning eng yuqori prototipi. Unda toString(), valueOf() kabi umumiy metodlar mavjud.
+
+Constructor function: Obyekt yaratishda ishlatiladi va uning prototipiga metodlar qo‘shish mumkin.
+
+Misol:
+function Person(ism, yosh) {
+  this.ism = ism;
+  this.yosh = yosh;
+}
+
+
+Person.prototype.salom = function() {
+  console.log("Salom, men " + this.ism + "man!");
+};
+
+let odam1 = new Person("Asadbek", 23);
+let odam2 = new Person("Olim", 25);
+
+odam1.salom(); // Salom, men Asadbekman!
+odam2.salom(); // Salom, men Olimman!
+
+OBJECT METOTDALI
+Object.keys(obj) - obyektning barcha kalitlarini massiv ko‘rinishida qaytaradi.
+Object.values(obj) - obyektning barcha qiymatlarini massiv ko‘rinishida qaytaradi.
+Object.entries(obj) - obyektni [kalit, qiymat] juftliklari massiviga aylantiradi.
+Object.assign(target, source) - bir obyektni boshqasiga nusxalaydi yoki birlashtiradi.
+Object.freeze(obj) - obyektni to‘liq muzlatadi (yangi property qo‘shib, o‘chirib yoki o‘zgartirib bo‘lmaydi).
+Object.seal(obj) - obyektni muhrlaydi (yangi property qo‘shib/o‘chirib bo‘lmaydi, lekin qiymatni o‘zgartirish mumkin).
+Object.create(proto) - berilgan prototip asosida yangi obyekt yaratadi.
+Object.defineProperty(obj, prop, descriptor) - obyektga maxsus sozlamalar bilan property qo‘shadi (masalan, writable, enumerable).
+Object.getOwnPropertyNames(obj) - obyektning barcha propertylarini (shu jumladan yashirinlarini) massiv ko‘rinishida qaytaradi.
+Object.hasOwn(obj, prop) - obyektning o‘zida property bormi yoki yo‘qmi, tekshiradi.
+Object.is(a, b) - ikkita qiymat bir xilmi yoki yo‘qmi, tekshiradi (=== ga o‘xshaydi, lekin NaNni ham hisobga oladi).
+Object.preventExtensions(obj) - obyektga yangi property qo‘shishni taqiqlaydi.
+Object.getPrototypeOf(obj) - obyektning prototipini qaytaradi.
+
